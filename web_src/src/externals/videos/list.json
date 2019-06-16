@@ -1,0 +1,9 @@
+{
+    "videos": [
+        {
+            "videoTitle": "demo",
+            "snapUrl": "/videos/demo/demo.png",
+            "videoUrl": "/videos/demo/video.m3u8"
+        }
+    ]
+}

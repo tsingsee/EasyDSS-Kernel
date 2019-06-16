@@ -1,0 +1,36 @@
+@import "~assets/styles/variables.less";
+
+.form-control:focus {
+  border-color: @base-border;
+  box-shadow: none;
+}
+
+.btn-primary {
+  background-color: @base;
+  border-color: @base-border;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary:focus,
+.btn-primary.hover {
+  background-color: @base-active !important;
+}
+
+.nav-tabs-custom>.nav-tabs>li.active {
+  border-top-color: @base;
+}
+
+.el-pager li.active {
+  background-color: @base !important;
+  border-color: @base-border !important;
+}
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    background-color: @base;
+}
+
+* {
+  outline: none;
+}
