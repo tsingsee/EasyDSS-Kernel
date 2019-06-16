@@ -749,13 +749,9 @@ GET /api/v1/getserverinfo
 
 ## 获取更多信息 ##
 
-咨询电话：13718530929
-
-邮件：[support@easydarwin.org](mailto:support@easydarwin.org) 
-
 WEB：[www.EasyDSS.com](http://www.easydss.com)
 
-Copyright &copy; www.EasyDSS.com 2012-2018
+Copyright &copy; www.EasyDSS.com 2012-2019
 
 ![EasyDarwin](http://upload-images.jianshu.io/upload_images/2692955-5abac51e6427ba78.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
 
