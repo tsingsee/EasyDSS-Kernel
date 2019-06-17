@@ -1,14 +1,12 @@
-#easydss
+# easydss
 
 ### 目录结构
 
-- dist 
+- release 
 
 	发布目录
 
 - web_src 
-
-	前端开发代码, 通过 webpack 组织代码, 详细讲解请参考我的[系列博客](http://www.penggy.cc/2017/10/12/EasyDSS%E9%AB%98%E6%80%A7%E8%83%BD%E6%B5%81%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%89%8D%E7%AB%AF%E9%87%8D%E6%9E%84(%E4%B8%80)-%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%20webpack%20+%20vue%20+%20AdminLTE%20%E5%A4%9A%E9%A1%B5%E9%9D%A2%E8%84%9A%E6%89%8B%E6%9E%B6/)
 
 	首次运行, 请执行
 
@@ -749,13 +747,6 @@ GET /api/v1/getserverinfo
 
 ## 获取更多信息 ##
 
-咨询电话：13718530929
-
-邮件：[support@easydarwin.org](mailto:support@easydarwin.org) 
-
 WEB：[www.EasyDSS.com](http://www.easydss.com)
 
-Copyright &copy; www.EasyDSS.com 2012-2018
-
-![EasyDarwin](http://upload-images.jianshu.io/upload_images/2692955-5abac51e6427ba78.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
-
+Copyright &copy; www.EasyDSS.com 2012-2019
