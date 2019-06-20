@@ -54,7 +54,7 @@
                             <td>提交激活码</td>
                             <td>
                                 <textarea  placeholder="输入申请到的激活码" rows="1" cols="50" v-model.trim="ActivationCode"></textarea>
-                                </br>
+                                <br />
                                 <button @click="CheckCode">提交</button>
                             </td>
                         </tr>
@@ -85,12 +85,12 @@ export default {
   },
   mounted() {
     $.ajax('/api/v1/getserverinfo').then(data => {
-        var Validity = data.EasyDarwin.Body.Validity;
+        var Validity = data.EasyDSS.Body.Validity;
         var reg2 = /([^:]+)$/;
         this.Validity = Validity.match(reg2)[1];
     })
      $.ajax('/api/v1/getrequestkey').then(key => {
-        this.machineCode = key.EasyDarwin.Body.RequestKey
+        this.machineCode = key.EasyDSS.Body.RequestKey
     })
   },
   
@@ -104,7 +104,7 @@ export default {
              return false;
          } else{
             $.ajax('/api/v1/verifyproductcode?productcode=' + this.ActivationCode).then(data=>{
-                if(data.EasyDarwin.Body.State==1){
+                if(data.EasyDSS.Body.State==1){
                     this.$message({
                         type: 'success',
                         message: '授权成功，重启EasyDSS后生效！'

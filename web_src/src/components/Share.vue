@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import EasyPlayer from 'easy-player'
+import EasyPlayer from '@easydarwin/easyplayer'
 import $ from 'jquery'
 
 export default {
@@ -16,7 +16,7 @@ export default {
       var id = this.getQueryString("id") || "";
       if(id){
           $.ajax('/api/v1/getlivesessions?id=' + id).then(data => {
-                var body = data.EasyDarwin.Body;
+                var body = data.EasyDSS.Body;
                 if(!body) return;
                 if(!body.HLS && (videojs.browser.IS_IOS||videojs.browser.IS_ANDROID)){
                     this.$message({

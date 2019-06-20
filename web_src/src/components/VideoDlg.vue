@@ -21,7 +21,7 @@
 
 <script>
 import 'jquery-ui/ui/widgets/draggable'
-import EasyPlayer from 'easy-player'
+import EasyPlayer from '@easydarwin/easyplayer'
 
 export default {
     data() {

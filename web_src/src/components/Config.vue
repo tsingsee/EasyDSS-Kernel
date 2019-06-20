@@ -48,7 +48,7 @@ export default {
     },
     mounted() {
         $.ajax("/api/v1/getbaseconfig", { dataType: "json" }).then(ret => {
-            var data = ret.EasyDarwin.Body;
+            var data = ret.EasyDSS.Body;
             this.ServerWanIP = data.ServerWanIP;
             this.HTTPWanPort = data.HTTPWanPort;
             this.RTMPWanPort = data.RTMPWanPort;

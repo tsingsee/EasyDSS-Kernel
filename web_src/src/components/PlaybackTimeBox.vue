@@ -39,7 +39,7 @@
 <script>
 import moment from 'moment'
 import DatePicker from 'components/DatePicker.vue'
-import EasyPlayer from 'easy-player'
+import EasyPlayer from '@easydarwin/easyplayer'
 import TimeRule from 'components/TimeRule.vue'
 
 export default {

@@ -12,20 +12,21 @@
       <div class="pull-right hidden-xs hide">
         EasyDSS
       </div>
-      <strong>Copyright &copy; {{ thisYear() }} <a href="http://www.easydss.com">www.easydss.com</a>.</strong> All rights reserved.
+      <strong>Copyright &copy; {{ thisYear() }} <a href="http://www.easydss.com">{{serverInfo.Copyright}}</a>.</strong> All rights reserved.
     </footer>
   </div>
 </template>
 
 <script>
 import "font-awesome/css/font-awesome.css"
-import "admin-lte/bootstrap/css/bootstrap.css"
+import "bootstrap/dist/css/bootstrap.css"
 import "admin-lte/dist/css/AdminLTE.css"
 import "admin-lte/dist/css/skins/_all-skins.css"
 import "assets/styles/custom.less"
+import "element-ui/lib/theme-default/index.css"
 
-import "admin-lte/bootstrap/js/bootstrap.js"
-import "admin-lte/dist/js/app.js"
+import "bootstrap/dist/js/bootstrap.js"
+import "admin-lte/dist/js/adminlte.js"
 
 
 import { mapState, mapActions } from "vuex"
@@ -69,7 +70,7 @@ export default {
     this.getServerInfo();
     this.fixHover();
     $(() => {
-        $.AdminLTE.layout.fix();
+        // $.AdminLTE.layout.fix();
     })
   },
   components: {
@@ -81,6 +82,7 @@ export default {
       "logoMiniText",
       "menus",
       "serverInfo"
+      
     ]),
     versionText(){
       let text = "";

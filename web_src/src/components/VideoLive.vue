@@ -46,8 +46,20 @@
                 <el-table-column prop="InBytes" label="推送流量" min-width="120" :formatter="formatInBytes"></el-table-column>
                 <el-table-column prop="NumOutputs" label="在线人数" min-width="100"></el-table-column>
                 <el-table-column prop="Time" label="直播时长" min-width="150"></el-table-column>
-                <el-table-column prop="Time" label="操作" min-width="100" inline-template fixed="right">
+                <el-table-column prop="Time" label="操作" width="170" inline-template fixed="right">
+                   <div>
+                       <div class="inline-select ">
+                        <select v-model="value" :placeholder="value" size="mini" @change="onChange">
+                            <option
+                            v-for="item in options"
+                            :key="item.value"
+                            >
+                            {{item.value}}
+                            </option>
+                        </select>
+                       </div>
                     <a role="button" class="btn btn-xs btn-success" @click.prevent="play(row)"> <i class='fa fa-play'></i> 播放</a>
+                   </div>
                 </el-table-column>
             </el-table>  
             <div v-if="viewMode == 'block4'" class="view-block4">
@@ -67,14 +79,14 @@
 
 <script>
 import Vue from 'vue'
-import { Table, TableColumn, Pagination , Popover } from 'element-ui'
+import { Table, TableColumn, Pagination , Popover,Option,Select  } from 'element-ui'
 import VideoDlg from 'components/VideoDlg.vue'
 import prettyBytes from 'pretty-bytes'
-import EasyPlayer from 'easy-player'
+import EasyPlayer from '@easydarwin/easyplayer'
 import fullscreen from 'vue-fullscreen'
 Vue.use(fullscreen);
 
-Vue.use(Table).use(TableColumn).use(Pagination).use(Popover);
+Vue.use(Table).use(TableColumn).use(Pagination).use(Popover).use(Option).use(Select);
 
 export default {
     data() {
@@ -82,7 +94,18 @@ export default {
             currentPage : 1,
             lives: [],
             timer: 0,
-            viewMode: 'list'
+            viewMode: 'list',
+            value:'FLV',
+             options: [{
+                value: 'FLV',
+                label: 'FLV'
+            },{
+                value: 'RTMP',
+                label: 'RTMP'
+            },{
+                value: 'HLS',
+                label: 'HLS'
+            },]
         }
     },
     components: { VideoDlg, EasyPlayer },
@@ -109,7 +132,8 @@ export default {
                 default:
                     return 10;
             }
-        },        
+        },  
+              
         total(){
             return this.lives.length;
         },
@@ -120,6 +144,9 @@ export default {
         }
     },
     methods: {
+        onChange(e){
+            this.value = e.target.value
+        },
         play(row){
             if(!row.HLS && (videojs.browser.IS_IOS||videojs.browser.IS_ANDROID)){
                 this.$message({
@@ -128,13 +155,20 @@ export default {
                 });
                 return;
             }
+            if(this.value == 'HLS'){
+              row.videoUrl = window.location.origin + row.HLS
+            } else if(this.value == 'RTMP'){
+                row.videoUrl = row.RTMP
+            }else if(this.value == 'FLV'){
+                row.videoUrl = window.location.origin + row['HTTP-FLV']
+            }
             row.videoTitle = row.Id;
-            row.videoUrl = (videojs.browser.IS_IOS||videojs.browser.IS_ANDROID) ? row.HLS : row.RTMP;
+            // row.videoUrl = (videojs.browser.IS_IOS||videojs.browser.IS_ANDROID) ? row.HLS : row.RTMP;
             this.$refs.videoDlg.play(row.videoUrl, row.videoTitle);
         },
         update(){
             $.ajax("/api/v1/getlivesessions", {dataType: "json"}).then(data => {
-                this.lives = (data.EasyDarwin.Body.Sessions||{}).Sessions||[];
+                this.lives = (data.EasyDSS.Body.Sessions||{}).Sessions||[];
             })            
         },
         formatInBitrate(row, col, val) {
@@ -173,6 +207,22 @@ export default {
 .fullscreen {
     position: fixed;
     left:0;top:0;right:0;bottom:0;
+}
+.inline-select {
+    width: 80px;
+   display: inline-block;
+   select {
+       cursor: pointer;
+       padding: 2px;
+       border: 1px solid #ccc;
+       border-radius: 3px;
+   }
+   option {
+    cursor: pointer;
+   }
+   select:hover{
+       border: 1px solid #00a65a;
+   }
 }
 </style>
 

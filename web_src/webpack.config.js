@@ -41,7 +41,7 @@ module.exports = {
         useLocalIp: true,
         proxy: {
             "*": {
-                target: 'http://www.easydss.com:10088',
+                target: 'http://127.0.0.1:10088',
                 secure: false
             }
         }
@@ -122,8 +122,8 @@ module.exports = {
         new webpack.HashedModuleIdsPlugin(),
         new CopyWebpackPlugin([
             { from: 'src/externals' },
-            { from: 'node_modules/easy-player/dist/component/easy-player-lib.min.js', to: 'js/'},
-            { from: 'node_modules/easy-player/dist/component/easy-player.swf'}
+            // { from: 'node_modules/@easydarwin/easy-player/dist/component/EasyPlayer-lib.min.js', to: 'js/'},
+            // { from: 'node_modules/@easydarwin/easy-player/dist/component/EasyPlayer.swf'}
         ]),
         new ExtractTextPlugin("css/[name].[chunkhash:8].css"),      
         new HtmlWebpackPlugin({

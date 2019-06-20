@@ -11,7 +11,7 @@ const store = new Vuex.Store({
         menus: [
             {
                 path: "/",
-                icon: "mouse-pointer",
+                icon: "desktop",
                 title: "视频广场"
             }, {
             //     path: "/list",
@@ -28,7 +28,7 @@ const store = new Vuex.Store({
             }, {
                 path: "/player",
                 icon: "play-circle",
-                title: "HLS播放器"
+                title: "H5播放器"
             }, {
                 path: "/config",
                 icon: "cogs",
@@ -48,7 +48,7 @@ const store = new Vuex.Store({
     actions : {
         getServerInfo({commit}){
             $.ajax("/api/v1/getserverinfo").then(ret => {
-                var serverInfo = Object.assign({}, ret.EasyDarwin.Body, ret.EasyDarwin.Header);
+                var serverInfo = Object.assign({}, ret.EasyDSS.Body, ret.EasyDSS.Header);
                 commit('updateServerInfo', serverInfo);
             })
         }   

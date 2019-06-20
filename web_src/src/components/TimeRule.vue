@@ -1,8 +1,8 @@
 <template>
     <div class="time-rule">
         <div class="time-day" ref="day" :style="{ left: timeDayX + 'px'}">
-            <div :class="['time-minute', minuteActiveClass(n - 1)]" :title="minuteTitle(n - 1)" v-for="n in 1440" :key="n" @click.prevent="clickMinute(n - 1)"></div>
-            <div :class="[ n==1 ? 'time-text-first' : 'time-text']" v-for="n in 24" :key="n">{{hourText(n - 1)}}</div>
+            <div :class="['time-minute', minuteActiveClass(n - 1)]" :title="minuteTitle(n - 1)" v-for="n in 1440" :key="n+Math.random()" @click.prevent="clickMinute(n - 1)"></div>
+            <div :class="[ n==1 ? 'time-text-first' : 'time-text']" v-for="n in 24" :key="n+Math.random()">{{hourText(n - 1)}}</div>
         </div>
         <div class="time-cursor" :style="{ left: timeCursorX + 'px'}" ref="cursor">
             <div class="time-cursor-text">{{timeCursorText}}</div>

@@ -25,14 +25,14 @@
                                 <td>EasyRTMP Android：支持前/后摄像头直播、安卓屏幕直播</td>
                                 <td><a href="https://fir.im/easyrtmp">https://fir.im/easyrtmp</a>
                                     <br/>
-                                    <img style="width: 200px;height: 200px;" :src="qr"></img>
+                                    <img style="width: 200px;height: 200px;" :src="qr" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>EasyRTMP iOS : 支持前/后摄像头直播</td>
                                 <td><a href="https://itunes.apple.com/us/app/easyrtmp/id1222410811?mt=8">https://itunes.apple.com/us/app/easyrtmp/id1222410811?mt=8</a>
                                     <br/>
-                                    <img style="width: 200px;height: 200px;" :src="ios_qr"></img>
+                                    <img style="width: 200px;height: 200px;" :src="ios_qr" />
                                 </td>
                             </tr>					
                             <tr>
