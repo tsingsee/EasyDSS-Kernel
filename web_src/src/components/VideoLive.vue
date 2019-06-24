@@ -46,19 +46,17 @@
                 <el-table-column prop="InBytes" label="推送流量" min-width="120" :formatter="formatInBytes"></el-table-column>
                 <el-table-column prop="NumOutputs" label="在线人数" min-width="100"></el-table-column>
                 <el-table-column prop="Time" label="直播时长" min-width="150"></el-table-column>
-                <el-table-column prop="Time" label="操作" width="170" inline-template fixed="right">
+                <el-table-column prop="Time" label="操作" width="180" inline-template fixed="right">
                    <div>
-                       <div class="inline-select ">
-                        <select v-model="value" :placeholder="value" size="mini" @change="onChange">
-                            <option
-                            v-for="item in options"
-                            :key="item.value"
-                            >
-                            {{item.value}}
-                            </option>
-                        </select>
-                       </div>
-                    <a role="button" class="btn btn-xs btn-success" @click.prevent="play(row)"> <i class='fa fa-play'></i> 播放</a>
+                    <el-dropdown split-button type="primary"  size="mini"  @click="handleClick(row)">
+                        播放
+                        <el-dropdown-menu slot="dropdown">
+                            <el-dropdown-item><span @click="onChange('FLV',row)">HTTP-FLV</span></el-dropdown-item>
+                            <el-dropdown-item><span @click="onChange('HLS',row)">HLS(m3u8)</span></el-dropdown-item>
+                            <el-dropdown-item><span @click="onChange('RTMP',row)">RTMP</span></el-dropdown-item>
+                        </el-dropdown-menu>
+                        </el-dropdown>
+                        <el-button type="primary" size="mini" @click="dialogFormVisibles(row)"><i class="fa fa-exclamation-circle"></i> 直播详情</el-button>
                    </div>
                 </el-table-column>
             </el-table>  
@@ -73,20 +71,77 @@
 			<el-pagination layout="prev,pager,next" class="pull-right" :total="total" :page-size.sync="pageSize" :current-page.sync="currentPage"></el-pagination>
 		</div>
 	</div>
+    <el-dialog title="直播信息" :visible.sync="dialogFormVisible">
+    <el-row class="el-row-span">
+        <el-col :span="7"><span>HTTP-FLV播放地址</span></el-col>
+        <el-col :span="15" class="el-col-span">
+            <span v-clipboard="form.flv" @success="handleSuccess" @error="handleError"><i class="fa fa-files-o"></i></span>
+        <el-input  :disabled="true" v-model="form.flv" auto-complete="off"></el-input></el-col>
+    </el-row>
+    <el-row class="el-row-span">
+        <el-col :span="7"><span>HLS(m3u8)源地址</span></el-col>
+        <el-col :span="15" class="el-col-span"> <span v-clipboard="form.hls" @success="handleSuccess" @error="handleError"><i class="fa fa-files-o"></i></span>
+            <el-input  :disabled="true" v-model="form.hls" auto-complete="off"></el-input>
+        </el-col>
+    </el-row>
+    <el-row class="el-row-span">
+        <el-col :span="7"><span>RTMP播放地址</span></el-col>
+        <el-col :span="15" class="el-col-span">
+            <span v-clipboard="form.rtmp" @success="handleSuccess" @error="handleError"><i class="fa fa-files-o"></i></span>
+            <el-input  :disabled="true" v-model="form.rtmp" auto-complete="off"></el-input>
+        </el-col>
+    </el-row>
+    <el-row class="el-row-span">
+        <el-col :span="7"><span>分享页面链接</span></el-col>
+        <el-col :span="15" class="el-col-span"> 
+            <span v-clipboard="form.share" @success="handleSuccess" @error="handleError"><i class="fa fa-files-o"></i></span>
+            <el-input  :disabled="true" v-model="form.share" auto-complete="off"></el-input>
+        </el-col>
+    </el-row>
+    <el-row class="el-row-span">
+        <span></span>
+        <el-col :span="7"><span>分享页面iframe集成</span></el-col>
+        <el-col :span="15" class="el-col-span"> 
+            <span v-clipboard="form.iframe" @success="handleSuccess" @error="handleError"><i class="fa fa-files-o"></i></span>
+            <el-input  :disabled="true" v-model="form.iframe" auto-complete="off"></el-input>
+        </el-col>
+    </el-row>
+    <el-row class="el-row-span">
+        <el-col :span="7"><span>扫码观看</span></el-col>
+        <el-col :span="15" class="el-qrcode-img"><Qrcode :value="form.sweep" tag="img" :options="{size: 150}"></Qrcode></el-col>
+        
+    </el-row>
+    <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+    </div>
+    </el-dialog>
     <VideoDlg ref="videoDlg" live></VideoDlg>		
 </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import { Table, TableColumn, Pagination , Popover,Option,Select  } from 'element-ui'
+import { Table, TableColumn, Pagination , Popover,Option,Select,DropdownItem,Dropdown,DropdownMenu,Button,Form,Dialog,FormItem,Input,Row,Col} from 'element-ui'
 import VideoDlg from 'components/VideoDlg.vue'
 import prettyBytes from 'pretty-bytes'
 import EasyPlayer from '@easydarwin/easyplayer'
 import fullscreen from 'vue-fullscreen'
+import Qrcode from "@xkeshi/vue-qrcode"
+import VueClipboards from 'vue-clipboards'
+ 
+Vue.use(VueClipboards)
+
 Vue.use(fullscreen);
 
-Vue.use(Table).use(TableColumn).use(Pagination).use(Popover).use(Option).use(Select);
+Vue.use(Table)
+.use(TableColumn).use(Pagination)
+.use(Popover).use(Option)
+.use(Select).use(DropdownItem)
+.use(Dropdown).use(DropdownMenu)
+.use(Button).use(Form).use(Dialog)
+.use(FormItem).use(Input)
+.use(Row).use(Col);
 
 export default {
     data() {
@@ -96,19 +151,20 @@ export default {
             timer: 0,
             viewMode: 'list',
             value:'FLV',
-             options: [{
-                value: 'FLV',
-                label: 'FLV'
-            },{
-                value: 'RTMP',
-                label: 'RTMP'
-            },{
-                value: 'HLS',
-                label: 'HLS'
-            },]
+            dialogFormVisible: false,
+            form: {
+                flv: '第三方',
+                hls: '',
+                rtmp: '',
+                share: '',
+                iframe: '',
+                sweep: '',
+                
+            },
+            formLabelWidth: '120px'
         }
     },
-    components: { VideoDlg, EasyPlayer },
+    components: { VideoDlg, EasyPlayer, Qrcode },
     beforeDestroy() {
         if(this.timer){
             clearInterval(this.timer);
@@ -144,8 +200,24 @@ export default {
         }
     },
     methods: {
-        onChange(e){
-            this.value = e.target.value
+        onChange(value,row){
+            this.value = value
+            console.log(value,11);
+            
+             this.play(row)
+        },
+        handleClick(row){
+            this.play(row)
+            
+        },
+        dialogFormVisibles(row){
+            this.dialogFormVisible = true
+            this.form.rtmp = row.RTMP
+            this.form.flv = window.location.origin + row['HTTP-FLV']
+            this.form.hls = window.location.origin + row.HLS
+            this.form.share = window.location.origin + `/share.html?id=${row.Id}`
+            this.form.iframe = `<iframe src="${this.form.share}" width="640" height="360" style="border:0" allow="autoplay" allowfullscreen></iframe>`
+            this.form.sweep = this.form.share
         },
         play(row){
             if(!row.HLS && (videojs.browser.IS_IOS||videojs.browser.IS_ANDROID)){
@@ -191,6 +263,13 @@ export default {
             }
             return "";
         },
+        handleSuccess(){
+            this.$message('复制信息成功!');
+        },
+        handleError(){
+            this.$message.error('复制信息失败!');
+        },
+ 
         fullscreen() {
             this.$fullscreen.enter(this.$el.querySelector(`.view-${this.viewMode}`), {
                 wrap: false
@@ -223,6 +302,35 @@ export default {
    select:hover{
        border: 1px solid #00a65a;
    }
+}
+.el-row-span {
+    text-align: right;
+    margin: 15px 0;
+    span {
+        line-height: 36px;
+        display: inline-block;
+        padding-right: 20px;
+    }
+}
+.el-col-span {
+    position: relative;
+    >span {
+        cursor: pointer;
+        padding-left: 10px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 36px;
+        width: 36px;
+        z-index: 99;
+        border: 1px solid #bfcbd9;
+        background-color: #eef1f6;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+}
+.el-qrcode-img {
+    text-align: left;
 }
 </style>
 
