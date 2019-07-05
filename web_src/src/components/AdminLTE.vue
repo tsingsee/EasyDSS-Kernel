@@ -116,7 +116,7 @@ export default {
       this.$refs['videoDlg'].play(video.videoUrl, video.videoTitle, video.snapUrl);
     },
     thisYear() {
-      return moment().format('YYYY');
+      return moment().format('YYYY')
     }
   }
 }
