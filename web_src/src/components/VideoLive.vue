@@ -210,7 +210,7 @@ export default {
             
         },
         dialogFormVisibles(row){
-            this.dialogFormVisible = true;
+            this.dialogFormVisible = true
             this.form.rtmp = row.RTMP
             this.form.flv = window.location.origin + row['HTTP-FLV']
             this.form.hls = window.location.origin + row.HLS
