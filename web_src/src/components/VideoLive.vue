@@ -47,14 +47,16 @@
                 <el-table-column prop="NumOutputs" label="在线人数" min-width="100"></el-table-column>
                 <el-table-column prop="Time" label="直播时长" min-width="150"></el-table-column>
                 <el-table-column prop="Time" label="操作" width="180" inline-template fixed="right">
-                   <div>
-                    <el-dropdown split-button type="primary"  size="mini"  @click="handleClick(row)">
-                        播放
-                        <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item><span @click="onChange('FLV',row)">HTTP-FLV</span></el-dropdown-item>
-                            <el-dropdown-item><span @click="onChange('HLS',row)">HLS(m3u8)</span></el-dropdown-item>
-                            <el-dropdown-item><span @click="onChange('RTMP',row)">RTMP</span></el-dropdown-item>
-                        </el-dropdown-menu>
+                   <div class="dropdown-icon">
+                        <el-dropdown size="mini">
+                            <el-button type="primary" size="mini" @click="handleClick(row)">
+                                播放<i class="el-icon-caret-bottom el-icon--right"></i>
+                            </el-button>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item><span @click="onChange('FLV',row)">HTTP-FLV</span></el-dropdown-item>
+                                <el-dropdown-item><span @click="onChange('HLS',row)">HLS(m3u8)</span></el-dropdown-item>
+                                <el-dropdown-item><span @click="onChange('RTMP',row)">RTMP</span></el-dropdown-item>
+                            </el-dropdown-menu>
                         </el-dropdown>
                         <el-button type="primary" size="mini" @click="dialogFormVisibles(row)"><i class="fa fa-exclamation-circle"></i> 直播详情</el-button>
                    </div>
@@ -72,49 +74,49 @@
 		</div>
 	</div>
     <el-dialog title="直播信息" :visible.sync="dialogFormVisible">
-    <el-row class="el-row-span">
-        <el-col :span="7"><span>HTTP-FLV播放地址</span></el-col>
-        <el-col :span="15" class="el-col-span">
-            <span v-clipboard="form.flv" @success="handleSuccess" @error="handleError"><i class="fa fa-files-o"></i></span>
-        <el-input  :disabled="true" v-model="form.flv" auto-complete="off"></el-input></el-col>
-    </el-row>
-    <el-row class="el-row-span">
-        <el-col :span="7"><span>HLS(m3u8)源地址</span></el-col>
-        <el-col :span="15" class="el-col-span"> <span v-clipboard="form.hls" @success="handleSuccess" @error="handleError"><i class="fa fa-files-o"></i></span>
-            <el-input  :disabled="true" v-model="form.hls" auto-complete="off"></el-input>
-        </el-col>
-    </el-row>
-    <el-row class="el-row-span">
-        <el-col :span="7"><span>RTMP播放地址</span></el-col>
-        <el-col :span="15" class="el-col-span">
-            <span v-clipboard="form.rtmp" @success="handleSuccess" @error="handleError"><i class="fa fa-files-o"></i></span>
-            <el-input  :disabled="true" v-model="form.rtmp" auto-complete="off"></el-input>
-        </el-col>
-    </el-row>
-    <el-row class="el-row-span">
-        <el-col :span="7"><span>分享页面链接</span></el-col>
-        <el-col :span="15" class="el-col-span"> 
-            <span v-clipboard="form.share" @success="handleSuccess" @error="handleError"><i class="fa fa-files-o"></i></span>
-            <el-input  :disabled="true" v-model="form.share" auto-complete="off"></el-input>
-        </el-col>
-    </el-row>
-    <el-row class="el-row-span">
-        <span></span>
-        <el-col :span="7"><span>分享页面iframe集成</span></el-col>
-        <el-col :span="15" class="el-col-span"> 
-            <span v-clipboard="form.iframe" @success="handleSuccess" @error="handleError"><i class="fa fa-files-o"></i></span>
-            <el-input  :disabled="true" v-model="form.iframe" auto-complete="off"></el-input>
-        </el-col>
-    </el-row>
-    <el-row class="el-row-span">
-        <el-col :span="7"><span>扫码观看</span></el-col>
-        <el-col :span="15" class="el-qrcode-img"><Qrcode :value="form.sweep" tag="img" :options="{size: 150}"></Qrcode></el-col>
-        
-    </el-row>
-    <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
-    </div>
+        <el-row class="el-row-span">
+            <el-col :span="7"><span>HTTP-FLV播放地址</span></el-col>
+            <el-col :span="15" class="el-col-span">
+                <span v-clipboard="form.flv" @success="handleSuccess" @error="handleError"><i class="fa fa-files-o"></i></span>
+            <el-input  :disabled="true" v-model="form.flv" auto-complete="off"></el-input></el-col>
+        </el-row>
+        <el-row class="el-row-span">
+            <el-col :span="7"><span>HLS(m3u8)源地址</span></el-col>
+            <el-col :span="15" class="el-col-span"> <span v-clipboard="form.hls" @success="handleSuccess" @error="handleError"><i class="fa fa-files-o"></i></span>
+                <el-input  :disabled="true" v-model="form.hls" auto-complete="off"></el-input>
+            </el-col>
+        </el-row>
+        <el-row class="el-row-span">
+            <el-col :span="7"><span>RTMP播放地址</span></el-col>
+            <el-col :span="15" class="el-col-span">
+                <span v-clipboard="form.rtmp" @success="handleSuccess" @error="handleError"><i class="fa fa-files-o"></i></span>
+                <el-input  :disabled="true" v-model="form.rtmp" auto-complete="off"></el-input>
+            </el-col>
+        </el-row>
+        <el-row class="el-row-span">
+            <el-col :span="7"><span>分享页面链接</span></el-col>
+            <el-col :span="15" class="el-col-span"> 
+                <span v-clipboard="form.share" @success="handleSuccess" @error="handleError"><i class="fa fa-files-o"></i></span>
+                <el-input  :disabled="true" v-model="form.share" auto-complete="off"></el-input>
+            </el-col>
+        </el-row>
+        <el-row class="el-row-span">
+            <span></span>
+            <el-col :span="7"><span>分享页面iframe集成</span></el-col>
+            <el-col :span="15" class="el-col-span"> 
+                <span v-clipboard="form.iframe" @success="handleSuccess" @error="handleError"><i class="fa fa-files-o"></i></span>
+                <el-input  :disabled="true" v-model="form.iframe" auto-complete="off"></el-input>
+            </el-col>
+        </el-row>
+        <el-row class="el-row-span">
+            <el-col :span="7"><span>扫码观看</span></el-col>
+            <el-col :span="15" class="el-qrcode-img"><Qrcode :value="form.sweep" tag="img" :options="{size: 150}"></Qrcode></el-col>
+            
+        </el-row>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="dialogFormVisible = false">取 消</el-button>
+            <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+        </div>
     </el-dialog>
     <VideoDlg ref="videoDlg" live></VideoDlg>		
 </div>
@@ -124,7 +126,6 @@
 import Vue from 'vue'
 import { Table, TableColumn, Pagination , Popover,Option,Select,DropdownItem,Dropdown,DropdownMenu,Button,Form,Dialog,FormItem,Input,Row,Col} from 'element-ui'
 import VideoDlg from 'components/VideoDlg.vue'
-import prettyBytes from 'pretty-bytes'
 import EasyPlayer from '@easydarwin/easyplayer'
 import fullscreen from 'vue-fullscreen'
 import Qrcode from "@xkeshi/vue-qrcode"
@@ -202,8 +203,6 @@ export default {
     methods: {
         onChange(value,row){
             this.value = value
-            console.log(value,11);
-            
              this.play(row)
         },
         handleClick(row){
@@ -244,10 +243,10 @@ export default {
             })            
         },
         formatInBitrate(row, col, val) {
-            return prettyBytes(val) + "/s";
+            return this.bytesToSize(val) + "/s";
         },
         formatInBytes(row, col, val) {
-            return prettyBytes(val);
+            return this.bytesToSize(val);
         },
         videoUrl(idx) {
             if(this.pageData.length > idx - 1){
@@ -269,7 +268,13 @@ export default {
         handleError(){
             this.$message.error('复制信息失败!');
         },
- 
+        bytesToSize(bytes) {  
+        　　if (bytes === 0) return '0 B';
+        　　let k = 1024;
+        　　let sizes = ['B','KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+　　　　    let i = Math.floor(Math.log(bytes) / Math.log(k));　
+        　　return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+        },
         fullscreen() {
             this.$fullscreen.enter(this.$el.querySelector(`.view-${this.viewMode}`), {
                 wrap: false
@@ -332,5 +337,9 @@ export default {
 .el-qrcode-img {
     text-align: left;
 }
+.dropdown-icon {
+    float: left;
+}
+
 </style>
 
