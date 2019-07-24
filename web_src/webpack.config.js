@@ -19,7 +19,7 @@ module.exports = {
         "share": ['babel-polyfill', resolve('src/share.js')]
     },
     output: {
-        path: resolve('../release/www'),
+        path: resolve('../kernel/www'),
         chunkFilename: 'js/[name].[chunkhash:8].js',
         filename: 'js/[name].[chunkhash:8].js'
     },
