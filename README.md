@@ -105,7 +105,8 @@ EasyDSS-Kernel在技术上非常好地融合了nginx、nginx-rtmp、flv、rtsp�
 		server {
 			listen $RTMP_PORT;		#rtmp 监听端口，默认10085
 	
-			#application可以自定义多个,例如：cmcc
+			#application可以自定义多个,例如：live/hls/record
+
 			application live {		#rtmp 直播应用
 				live on;
 			}
@@ -113,8 +114,15 @@ EasyDSS-Kernel在技术上非常好地融合了nginx、nginx-rtmp、flv、rtsp�
 			application hls {		#hls 直播应用
 				live on;			#live 表示只分发 rtmp
 				hls on;				#hls 同步输出 rtmp 和 hls 直播
+				hls_path $HLS_PATH;	#hls切片目录
+				hls_fragment 4s;	#ts 切片时长
+			}
+
+			application record {	#record 直播应用
+				live on;			#live 表示只分发 rtmp
+				hls on;				#hls 同步输出 rtmp 和 hls 直播
 				hls_record on;		#不配置或者配置 off 表示不录像，on 表示服务器端同步录像
-				hls_path $HLS_PATH;	#hls 直播切片目录
+				hls_path $RECORD_PATH;	#hls录像目录
 				hls_fragment 4s;	#ts 切片时长
 			}
 		}
