@@ -1,10 +1,12 @@
 # EasyDSS-Kernel
 
-EasyDSS-Kernel是整个Easy系列商业产品的流媒体核心服务，EasyDSS-Kernel是EasyDSS团队经过多年的商业发展和迭代磨砺，集各种大成于一体的商业流媒体服务软件，采用业界优秀的nginx服务框架模式设计，充分秉承了高性能、高并发、高可用、易扩展的设计理念，目前基于EasyDSS-Kernel的多款商业软件（[EasyDSS](http://www.easydss.com "EasyDSS流媒体服务器")、[EasyNVR](http://www.easynvr.com/ "EasyNVR智能云终端")、[EasyGBS](http://www.easygbs.com "EasyGBS国标流媒体服务")、[EasyNVS](http://www.easynvs.com/ "EasyNVS视频综合管理平台")）已经在旅游业、教育业、物流仓储、平安工地、能源环保、广电行业、工业与物联网、智能农业、视频智能分析等几乎所有的行业都已服务并稳定运营多年。EasyDSS移动互联网时代贴近企业点播/直播需求的一款接地气的流媒体服务器，可以形成一套完整的视频直播、录播解决方案，满足用户在各种行业场景的流媒体业务需求。
+EasyDSS-Kernel是一款高性能流媒体音视频服务软件，是整个Easy系列商业产品的流媒体核心服务，EasyDSS-Kernel是[EasyDarwin开源团队](http://www.easydarwin.org "EasyDarwin开源流媒体服务器")和[TSINGSEE青犀团队](http://www.tsingsee.com "TSINGSEE青犀云视频")经过多年的商业发展和迭代磨砺，集各种大成于一体的商业流媒体服务软件，采用业界优秀的nginx服务框架模式设计，充分秉承了高性能、高并发、高可用、易扩展的设计理念，目前基于EasyDSS-Kernel的多款商业软件（[EasyDSS流媒体服务器](http://www.easydss.com "EasyDSS流媒体服务器")、[EasyNVR智能云终端](http://www.easynvr.com/ "EasyNVR智能云终端")、[EasyGBS国标流媒体服务](http://www.easygbs.com "EasyGBS国标流媒体服务")、[EasyNVS视频综合管理平台](http://www.easynvs.com/ "EasyNVS视频综合管理平台")）已经在旅游业、教育业、物流仓储、平安工地、能源环保、广电行业、工业与物联网、智能农业、视频智能分析等几乎所有的行业都已服务并稳定运营多年。EasyDSS移动互联网时代贴近企业点播/直播需求的一款接地气的流媒体服务器，可以形成一套完整的视频直播、录播解决方案，满足用户在各种行业场景的流媒体业务需求。
+
+EasyDSS-Kernel是一套完全可靠的音视频流媒体服务，可基于EasyDSS-Kernel开发各种各样的流媒体应用！
 
 ## 服务参数
 
-EasyDSS-Kernel在技术上非常好地融合了nginx、nginx-rtmp、flv、rtsp、ffmpeg等多项流媒体技术之大成：
+EasyDSS-Kernel在技术上非常好地融合了nginx、nginx-rtmp、flv、live555、ffmpeg等多项流媒体技术之大成：
 
 ### 主要性能参数包括
 
