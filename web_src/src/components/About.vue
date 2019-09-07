@@ -46,8 +46,6 @@
                             <td>机器码</td>
                             <td>
                                 <span id="key-info">{{machineCode}}</span>
-                                <br />
-                                <span style="color:#bbb">（通过邮箱：support@easydarwin.org 向商务人员咨询永久授权信息）</span>
                             </td>
                         </tr>					
                         <tr v-if="Validity.indexOf('Unlimited')<0">
