@@ -37,9 +37,11 @@
                     <tbody>
                         <tr>
                             <td>授权时间</td>
-                            <td><span v-if="Validity.indexOf('Unlimited')<0">未授权&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;试用期还剩</span>
+                            <td><span v-if="Validity.indexOf('Unlimited')<0">工具版(未授权)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用期还剩</span>
                                 <span v-if="Validity.indexOf('Unlimited')>=0">永久授权</span>
                                 <span v-if="Validity.indexOf('Unlimited')<0" id="validity-info">{{Validity}}</span>
+                                <br />
+                                <span style="color:#bbb">（工具版使用到期可至<a href="http://open.tsingsee.com/middleware/easydsskernel/#dev" target="_blank">青犀开放平台open.tsingsee.com</a>下载最新工具版本）</span>
                             </td>
                         </tr>
                         <tr  v-if="Validity.indexOf('Unlimited')<0">

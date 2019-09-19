@@ -12,7 +12,7 @@
       <div class="pull-right hidden-xs hide">
         EasyDSS
       </div>
-      <strong>Copyright &copy; {{ thisYear() }} <a href="http://www.easydss.com">{{serverInfo.Copyright}}</a>.</strong> All rights reserved.
+      <strong>Copyright &copy; {{ thisYear() }} <a href="http://www.easydss.com" target="_blank">{{serverInfo.Copyright}}</a>.</strong> All rights reserved.
     </footer>
   </div>
 </template>

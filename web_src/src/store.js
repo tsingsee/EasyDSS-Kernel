@@ -5,8 +5,8 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        logoText: "EasyDSS™",
-        logoMiniText: "DSS",
+        logoText: "EasyDSS-Kernel",
+        logoMiniText: "Kernel",
         serverInfo: {},
         menus: [
             {
