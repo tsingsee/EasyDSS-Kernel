@@ -298,3 +298,12 @@
 2019/07/05 17:35:08 [error] 8988#13820: *2638 CreateFile() "C:\Users\ed\Desktop\EasyDSS-Kernel\release/www/js/sockjs.js.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: , request: "GET /js/sockjs.js.map HTTP/1.1", host: "127.0.0.1:8080"
 2019/07/05 17:35:11 [error] 8988#13820: *2642 CreateFile() "C:\Users\ed\Desktop\EasyDSS-Kernel\release/www/js/sockjs.js.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: , request: "GET /js/sockjs.js.map HTTP/1.1", host: "192.168.157.1:8080"
 2019/07/05 17:35:22 [error] 8988#13820: *2652 CreateFile() "C:\Users\ed\Desktop\EasyDSS-Kernel\release/www/js/sockjs.js.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: , request: "GET /js/sockjs.js.map HTTP/1.1", host: "192.168.157.1:8080"
+2019/11/28 17:53:47 [emerg] 27340#14560: CreateDirectory() "www/hls" failed
+2019/11/28 17:54:25 [notice] 22324#20240: using inherited sockets from "832;836;"
+2019/11/28 17:54:25 [error] 22324#12356: EasyDSS Start Up!!! 
+2019/11/28 17:54:25 [error] 22324#12356: SoftWareKeyDecode
+
+2019/11/28 17:54:25 [error] 22324#12356: strResult : 1
+
+2019/11/28 17:54:25 [error] 22324#12356: period : 32	
+2019/11/28 17:54:25 [error] 22324#12356: PID[22324] ngx_rtmp_rtsp_init_process::Startup rtsp server..
