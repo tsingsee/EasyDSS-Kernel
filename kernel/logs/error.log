@@ -1,0 +1,9 @@
+2020/01/17 16:26:07 [emerg] 35620#8828: CreateDirectory() "www/hls" failed
+2020/01/17 16:27:10 [notice] 31228#33228: using inherited sockets from "820;824;"
+2020/01/17 16:27:10 [error] 31228#8500: EasyDSS Start Up!!! 
+2020/01/17 16:27:10 [error] 31228#8500: SoftWareKeyDecode
+
+2020/01/17 16:27:10 [error] 31228#8500: strResult : 1
+
+2020/01/17 16:27:10 [error] 31228#8500: period : 43	
+2020/01/17 16:27:10 [error] 31228#8500: PID[31228] ngx_rtmp_rtsp_init_process::Startup rtsp server..
